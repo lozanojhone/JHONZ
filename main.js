@@ -1,5 +1,5 @@
 // === BASE DE DATOS LOCAL CON TALLAS Y COLORES ===
-const WHATSAPP_NUM = "51999999999"; 
+const WHATSAPP_NUM = "51906308439"; 
 const products = [
     { 
         id: 1, name: "Polo Oversize Neón", category: "polos", price: 65, 
