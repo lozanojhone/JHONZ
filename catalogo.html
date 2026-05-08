@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>JHONZ | Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- MARQUEE SUPERIOR -->
+    <div class="top-bar">
+        <marquee scrollamount="8">🔥 ENVÍO GRATIS EN PEDIDOS MAYORES A S/ 200 • NUEVOS DROPS DISPONIBLES CADA SEMANA • CALIDAD PREMIUM 🔥</marquee>
+    </div>
+    
+    <!-- BARRA DE BIENVENIDA PERSONALIZADA -->
+    <div class="welcome-bar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="welcome-text"><i class="fas fa-bolt"></i> ¡BIENVENIDO A JHONZ! EL ESTILO URBANO QUE TE DEFINE</span>
+            <a href="#" style="color: white; font-size: 0.85rem; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                <i class="fas fa-user-circle" style="font-size: 1.2rem; color: var(--orange);"></i> Mi Cuenta
+            </a>
+        </div>
+    </div>
+
+    <!-- HEADER PRINCIPAL -->
+    <header>
+        <div class="container nav-wrapper">
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-cube" style="color: var(--orange);"></i> JHONZ
+                </a>
+            </div>
+            
+            <!-- MENÚ CENTRAL -->
+            <nav class="main-menu">
+                <a href="index.html">INICIO</a>
+                <a href="catalogo.html">TIENDA</a>
+                <a href="catalogo.html?categoria=polos">POLOS</a>
+                <a href="catalogo.html?categoria=hoodies">HOODIES</a>
+                <a href="catalogo.html?categoria=pantalones">PANTALONES</a>
+                <a href="catalogo.html" class="sale">🔥 SALE</a>
+            </nav>
+
+            <!-- ICONOS DERECHOS (SOCIALES Y CARRITO RESTAURADOS) -->
+            <div class="nav-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <span style="color: #ccc;">|</span>
+                <a href="catalogo.html"><i class="fas fa-search"></i></a>
+                <a href="carrito.html" class="cart-icon-wrapper">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count" class="cart-count-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" style="padding: 40px 20px;">
+        <h2 class="section-heading" style="text-align: left;">NUESTRA <span>TIENDA</span></h2>
+        
+        <div style="display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 250px; position: relative;">
+                <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #888;"></i>
+                <input type="text" id="searchBar" placeholder="¿Qué prenda buscas?" onkeyup="applyFilters()" class="custom-select" style="width: 100%; padding-left: 45px; height: 50px; font-size: 1rem;">
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <select id="filterCategory" onchange="applyFilters()" class="custom-select" style="width: 100%; height: 50px; font-size: 1rem;">
+                    <option value="all">TODAS LAS CATEGORÍAS</option>
+                    <option value="polos">POLOS</option>
+                    <option value="hoodies">HOODIES Y CASACAS</option>
+                    <option value="pantalones">PANTALONES CARGO</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="product-grid" id="product-display"></div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 style="font-size: 2rem; color: white;"><i class="fas fa-cube" style="color: var(--orange);"></i> JHONZ</h3>
+                    <p style="margin-top: 15px; line-height: 1.6;">Diseñado para la jungla de concreto. Elevamos tu estilo diario con prendas urbanas de la más alta calidad.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>CONTACTO</h3>
+                    <p><i class="fas fa-phone-alt"></i> +51 999 999 999</p>
+                    <p><i class="fas fa-envelope"></i> ventas@jhonz.com</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Sábado: 9:00 AM - 8:00 PM</p>
+                </div>
+                <div class="footer-col">
+                    <h3>UBICACIÓN</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Cajamarca, Perú</p>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt" style="font-size: 2rem; margin-bottom: 10px; color: #444;"></i>
+                        <span>Mapa Interactivo</span>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>SOPORTE</h3>
+                    <a href="#"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Guía de Tallas</a>
+                    <a href="#"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Cambios y Devoluciones</a>
+                    <a href="#"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Preguntas Frecuentes</a>
+                    <a href="#"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Libro de Reclamaciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/51999999999" class="float-ws" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <script src="main.js"></script>
+</body>
+</html>
