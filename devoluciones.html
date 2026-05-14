@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>JHONZ | Centro de Soporte Avanzado</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --orange: #ff4500;
+            --black-pure: #050505;
+            --dark-grey: #121212;
+            --glass: rgba(20, 20, 20, 0.85);
+        }
+
+        body { background: var(--black-pure); color: white; font-family: 'Montserrat', sans-serif; }
+
+        /* === BARRA DE PROGRESO DE CONFIANZA === */
+        .trust-bar {
+            height: 4px;
+            background: #222;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 2000;
+        }
+        .progress {
+            height: 100%;
+            background: var(--orange);
+            width: 0%;
+            transition: 0.4s;
+            box-shadow: 0 0 10px var(--orange);
+        }
+
+        .main-container { max-width: 850px; margin: 60px auto; padding: 0 20px; }
+
+        /* === ADVERTENCIAS DINÁMICAS === */
+        .warning-box {
+            background: rgba(255, 69, 0, 0.1);
+            border: 1px dashed var(--orange);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            animation: pulse 2s infinite;
+        }
+        .warning-box i { font-size: 1.5rem; color: var(--orange); }
+        .warning-box p { font-size: 0.85rem; color: #ccc; margin: 0; }
+
+        @keyframes pulse {
+            0% { border-color: rgba(255, 69, 0, 0.3); }
+            50% { border-color: rgba(255, 69, 0, 1); }
+            100% { border-color: rgba(255, 69, 0, 0.3); }
+        }
+
+        /* === FORMULARIO INTERACTIVO === */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+        }
+
+        .compact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full { grid-column: span 2; }
+
+        .input-group { position: relative; }
+        .input-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Oswald';
+            font-size: 0.85rem;
+            color: var(--orange);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .input-style {
+            width: 100%;
+            padding: 15px 18px;
+            background: #000;
+            border: 1px solid #222;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .input-style:focus {
+            border-color: var(--orange);
+            background: #080808;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 69, 0, 0.15);
+        }
+
+        /* === TOOLTIP DE AYUDA === */
+        .input-group:hover::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: -25px;
+            left: 10px;
+            font-size: 0.7rem;
+            color: #555;
+            opacity: 1;
+        }
+
+        /* === BOTÓN DE ACCIÓN === */
+        .btn-jhonz {
+            width: 100%;
+            background: var(--orange);
+            color: white;
+            padding: 20px;
+            border: none;
+            border-radius: 14px;
+            font-family: 'Oswald';
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            text-transform: uppercase;
+        }
+
+        .btn-jhonz:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 69, 0, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-jhonz i { font-size: 1.5rem; }
+
+        /* Iconos de Redes Gigantes al pasar el mouse */
+        .social-footer {
+            margin-top: 50px;
+            text-align: center;
+            border-top: 1px solid #222;
+            padding-top: 30px;
+        }
+        .social-icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .social-icons-row a {
+            font-size: 3rem;
+            color: #222;
+            transition: 0.5s;
+        }
+        .social-icons-row a:hover { transform: scale(1.3) rotate(8deg); }
+        .social-icons-row .fb:hover { color: #1877F2; text-shadow: 0 0 20px #1877f2; }
+        .social-icons-row .ig:hover { color: #E4405F; text-shadow: 0 0 20px #e4405f; }
+        .social-icons-row .tk:hover { color: #00f2ea; text-shadow: 0 0 20px #ff0050; }
+
+        @media (max-width: 768px) {
+            .compact-grid { grid-template-columns: 1fr; }
+            .full { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- MARQUEE SUPERIOR -->
+    <div class="top-bar">
+        <marquee scrollamount="8">🔥 ENVÍO GRATIS EN PEDIDOS MAYORES A S/ 200 • NUEVOS DROPS DISPONIBLES CADA SEMANA • CALIDAD PREMIUM 🔥</marquee>
+    </div>
+    
+    <!-- BARRA DE BIENVENIDA PERSONALIZADA -->
+    <div class="welcome-bar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="welcome-text"><i class="fas fa-bolt"></i> ¡BIENVENIDO A JHONZ! EL ESTILO URBANO QUE TE DEFINE</span>
+            <a href="#" style="color: white; font-size: 0.85rem; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                <i class="fas fa-user-circle" style="font-size: 1.2rem; color: var(--orange);"></i> Mi Cuenta
+            </a>
+        </div>
+    </div>
+
+    <!-- HEADER PRINCIPAL -->
+    <header>
+        <div class="container nav-wrapper">
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo1.png" alt="JHONZ" class="logo-img">
+                </a>
+            </div>
+            
+            <!-- MENÚ CENTRAL -->
+            <nav class="main-menu">
+                <a href="index.html">INICIO</a>
+                <a href="catalogo.html">TIENDA-H&M</a>
+                <a href="galeria.html">GALERÍA</a>
+                <a href="nosotros.html">NOSOTROS</a>
+                <a href="contacto.html">CONTÁCTANOS</a>
+                <a href="catalogo.html?categoria=pantalones">PROXIMAMENTE</a>
+                <a href="catalogo.html" class="sale">SALE</a>
+            </nav>
+
+            <!-- ICONOS DERECHOS (SOCIALES Y CARRITO RESTAURADOS) -->
+            <div class="nav-icons">
+                <a href="https://web.facebook.com/profile.php?id=61566815045695"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/jhonzoriginal/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@jhonzoriginal"><i class="fab fa-tiktok"></i></a>
+                <span style="color: #ccc;">|</span>
+                <a href="catalogo.html"><i class="fas fa-search"></i></a>
+                <a href="carrito.html" class="cart-icon-wrapper">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count" class="cart-count-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="trust-bar"><div class="progress" id="p-bar"></div></div>
+
+    <div class="main-container">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="font-family: 'Oswald'; font-size: 3.5rem; margin: 0;">ADN <span style="color: var(--orange);">JHONZ</span></h1>
+            <p style="color: #666; font-size: 1rem; letter-spacing: 2px;">SOPORTE POST-VENTA PREMIUM</p>
+        </div>
+
+        <div class="warning-box">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p><strong>ATENCIÓN:</strong> El sistema rechazará solicitudes con nombres falsos o datos incompletos. Asegúrese de que su DNI coincida con el nombre del titular.</p>
+        </div>
+
+        <div class="glass-card">
+            <form id="proForm">
+                <div class="compact-grid">
+                    
+                    <div class="input-group" data-tip="Use su nombre tal cual aparece en su DNI">
+                        <label><i class="fas fa-user"></i> Nombre Real</label>
+                        <input type="text" id="n" class="input-style" placeholder="Ej: Royer Jhonel Lozano" required oninput="updateProgress()">
+                    </div>
+
+                    <div class="input-group" data-tip="8 dígitos obligatorios">
+                        <label><i class="fas fa-id-card"></i> DNI de Titular</label>
+                        <input type="number" id="d" class="input-style" placeholder="Ej: 70123456" required oninput="updateProgress()">
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fab fa-whatsapp"></i> WhatsApp</label>
+                        <input type="tel" id="w" class="input-style" placeholder="Ej: 926884544" required oninput="updateProgress()">
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fas fa-file-invoice"></i> Comprobante</label>
+                        <select id="c" class="input-style" required onchange="updateProgress()">
+                            <option value="" disabled selected>Seleccione Comprobante</option>
+                            <option value="Boleta">Boleta de Venta</option>
+                            <option value="Factura">Factura Electrónica</option>
+                            <option value="Ticket">Nota de Venta</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group full">
+                        <label><i class="fas fa-map-marker-alt"></i> Dirección Exacta</label>
+                        <input type="text" id="a" class="input-style" placeholder="Ej: Jr. Comercio 450 - Int 2, Cajamarca" required oninput="updateProgress()">
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fas fa-tshirt"></i> Prenda y Talla</label>
+                        <input type="text" id="p" class="input-style" placeholder="Ej: Hoodie Cyberpunk XL" required oninput="updateProgress()">
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fas fa-layer-group"></i> Cantidad</label>
+                        <input type="number" id="q" class="input-style" value="1" min="1" required oninput="updateProgress()">
+                    </div>
+
+                    <div class="input-group full">
+                        <label><i class="fas fa-comment-dots"></i> Motivo de la Solicitud</label>
+                        <textarea id="r" class="input-style" style="height: 100px;" placeholder="Sea específico: ¿Por qué desea el cambio?" required oninput="updateProgress()"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="warning-box" style="background: rgba(0,0,0,0.3); border: 1px solid #333; animation: none; margin-top: 20px;">
+                    <i class="fas fa-info-circle" style="color: #555;"></i>
+                    <p style="color: #666; font-size: 0.75rem;">Al presionar el botón, se generará una orden de soporte técnica que será atendida en un plazo máximo de 24 horas.</p>
+                </div>
+
+                <button type="submit" class="btn-jhonz">
+                    <i class="fab fa-whatsapp"></i> GENERAR TICKET DE SOPORTE
+                </button>
+            </form>
+        </div>
+
+    <!-- COMUNIDAD Y REDES GIGANTES -->
+    <section class="social-perfection">
+        <div class="container">
+            <h2>SÍGUENOS EN NUESTRAS REDES</h2>
+            <div class="social-row-giant">
+                <a href="https://web.facebook.com/profile.php?id=61566815045695" class="social-box fb">
+                    <div class="icon-circle"><i class="fab fa-facebook"></i></div>
+                    <span>FACEBOOK</span>
+                </a>
+                <a href="https://www.instagram.com/jhonzoriginal/" class="social-box ig">
+                    <div class="icon-circle"><i class="fab fa-instagram"></i></div>
+                    <span>INSTAGRAM</span>
+                </a>
+                <a href=" https://www.tiktok.com/@jhonzoriginal" class="social-box tk">
+                    <div class="icon-circle"><i class="fab fa-tiktok"></i></div>
+                    <span>TIKTOK</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <a href="https://wa.me/51926884544" class="float-ws" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <script src="main.js"></script>
+    </div>
+    <script>
+        // Función para la barra de progreso interactiva
+        function updateProgress() {
+            const inputs = document.querySelectorAll('.input-style');
+            let filled = 0;
+            inputs.forEach(input => {
+                if(input.value.trim() !== "" && input.value !== null) {
+                    filled++;
+                }
+            });
+            const percent = (filled / inputs.length) * 100;
+            document.getElementById('p-bar').style.width = percent + "%";
+        }
+
+        document.getElementById('proForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const data = {
+                name: document.getElementById('n').value,
+                dni: document.getElementById('d').value,
+                ws: document.getElementById('w').value,
+                doc: document.getElementById('c').value,
+                addr: document.getElementById('a').value,
+                item: document.getElementById('p').value,
+                qty: document.getElementById('q').value,
+                reason: document.getElementById('r').value
+            };
+
+            const myNum = "51926884544";
+            const text = `*🔥 TICKET DE SOPORTE JHONZ 🔥*%0A` +
+                         `--------------------------------%0A` +
+                         `👤 *CLIENTE:* ${data.name}%0A` +
+                         `🪪 *DNI:* ${data.dni}%0A` +
+                         `🏠 *DIRECCIÓN:* ${data.addr}%0A` +
+                         `📞 *WHATSAPP:* ${data.ws}%0A` +
+                         `--------------------------------%0A` +
+                         `📦 *PRENDA:* ${data.item}%0A` +
+                         `🔢 *CANTIDAD:* ${data.qty}%0A` +
+                         `📄 *DOCUMENTO:* ${data.doc}%0A` +
+                         `❓ *MOTIVO:* ${data.reason}%0A` +
+                         `--------------------------------%0A` +
+                         `_Por favor, adjunte foto de su comprobante._`;
+
+            window.open(`https://wa.me/${myNum}?text=${text}`, '_blank');
+        });
+    </script>
+       <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                <h3 style="font-size: 2rem; color: white;">
+                    <img src="img/logo1.png" alt="" style="width: 80px; height: 80px; object-fit: cover; vertical-align: middle; border-radius: 5px;">
+                    JHONZ</h3>
+                    <p style="margin-top: 15px; line-height: 1.6;">Diseñado para quienes viven con estilo. Moda urbana, casual, oversize, deportiva, moderna, cómoda y de alta calidad para destacar cada día.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>CONTACTO</h3>
+                    <p><i class="fas fa-phone-alt"></i> +51 926 884 544</p>
+                    <p><i class="fas fa-envelope"></i> jhonzcajamarca@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Sábado: 8:00 AM - 8:00 PM</p>
+                </div>
+                <div class="footer-col">
+                <!-- uvicacion de mapa en tiempo real-->
+               <div class="footer-col">
+                <h3>PUNTO DE VENTA</h3>
+                <p style="color:#888;">
+                    <i class="fas fa-map-marker-alt" style="color:var(--orange);"></i> Cajamarca, Perú</p>
+                    <!-- Contenedor del mapa real para el pie de página -->
+                     <h3><div style="height:100px; margin-top:15px; border-radius:10px; overflow:hidden; border: 1px solid #333;">
+                        <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15835.88934571676!2d-78.5167!3d-7.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91302336336b9579%3A0x6b490f2095f9c46d!2sCajamarca!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: grayscale(1) invert(1) contrast(1.2); opacity: 0.7;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe></h3>
+                </div>
+            </div>
+                <div class="footer-col">
+                    <h3>SOPORTE</h3>
+                    <a href="#"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Guía de Tallas</a>
+                    <a href="devoluciones.html"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Cambios y Devoluciones</a>
+                    <a href="libro.html"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Libro de Reclamaciones</a>
+                    <a href="privacidad.html"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+        <footer style="background: #000; padding: 60px 0; border-top: 1px solid #111;">
+        <div class="container" style="text-align: center; color: #444;">
+            <p>&copy; 2026 JHONZ - Cajamarca, Perú. Tendencias que inspiran tu forma de vestir.</p>
+        </div>
+    </footer>
+</body>
+</html>

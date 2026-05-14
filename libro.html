@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>JHONZ | Libro de Reclamaciones Oficial</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --orange: #ff4500; }
+        body { background: #000; color: white; font-family: 'Montserrat', sans-serif; }
+        .legal-container { max-width: 900px; margin: 40px auto; padding: 20px; }
+
+        /* Encabezado */
+        .reclamaciones-header {
+            border-bottom: 2px solid var(--orange);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .reclamaciones-header h1 { font-family: 'Oswald'; font-size: 2.2rem; text-transform: uppercase; margin: 0; }
+        .hoja-info { text-align: right; font-family: 'Oswald'; color: var(--orange); }
+
+        /* Formulario */
+        .legal-card {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 50px rgba(255, 69, 0, 0.1);
+        }
+        .section-title {
+            background: #151515;
+            padding: 12px;
+            font-family: 'Oswald';
+            color: var(--orange);
+            margin: 30px 0 15px;
+            border-left: 5px solid var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .grid-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full-width { grid-column: span 2; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .form-input {
+            width: 100%;
+            background: #000;
+            border: 1px solid #333;
+            padding: 14px;
+            color: white;
+            font-family: 'Montserrat';
+            border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .form-input:focus { border-color: var(--orange); background: #050505; }
+
+        /* Radios */
+        .radio-group { display: flex; gap: 25px; padding: 10px 0; }
+        .radio-option { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; }
+
+        /* Botón */
+        .btn-submit-legal {
+            width: 100%;
+            background: var(--orange);
+            color: white;
+            padding: 22px;
+            border: none;
+            font-family: 'Oswald';
+            font-size: 1.4rem;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: 0.3s;
+        }
+        .btn-submit-legal:hover { background: #ff5511; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,69,0,0.3); }
+
+        /* PIE DE PÁGINA VISIBLE */
+        .footer-legal-text {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            text-align: justify;
+            line-height: 1.6;
+            background: #111;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        @media (max-width: 768px) { .grid-row { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
+    </style>
+</head>
+<body>
+    <!-- MARQUEE SUPERIOR -->
+    <div class="top-bar">
+        <marquee scrollamount="8">🔥 ENVÍO GRATIS EN PEDIDOS MAYORES A S/ 200 • NUEVOS DROPS DISPONIBLES CADA SEMANA • CALIDAD PREMIUM 🔥</marquee>
+    </div>
+    
+    <!-- BARRA DE BIENVENIDA PERSONALIZADA -->
+    <div class="welcome-bar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="welcome-text"><i class="fas fa-bolt"></i> ¡BIENVENIDO A JHONZ! EL ESTILO URBANO QUE TE DEFINE</span>
+            <a href="#" style="color: white; font-size: 0.85rem; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                <i class="fas fa-user-circle" style="font-size: 1.2rem; color: var(--orange);"></i> Mi Cuenta
+            </a>
+        </div>
+    </div>
+
+    <!-- HEADER PRINCIPAL -->
+    <header>
+        <div class="container nav-wrapper">
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo1.png" alt="JHONZ" class="logo-img">
+                </a>
+            </div>
+            
+            <!-- MENÚ CENTRAL -->
+            <nav class="main-menu">
+                <a href="index.html">INICIO</a>
+                <a href="catalogo.html">TIENDA-H&M</a>
+                <a href="galeria.html">GALERÍA</a>
+                <a href="nosotros.html">NOSOTROS</a>
+                <a href="contacto.html">CONTÁCTANOS</a>
+                <a href="catalogo.html?categoria=pantalones">PROXIMAMENTE</a>
+                <a href="catalogo.html" class="sale">SALE</a>
+            </nav>
+
+            <!-- ICONOS DERECHOS (SOCIALES Y CARRITO RESTAURADOS) -->
+            <div class="nav-icons">
+                <a href="https://web.facebook.com/profile.php?id=61566815045695"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/jhonzoriginal/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@jhonzoriginal"><i class="fab fa-tiktok"></i></a>
+                <span style="color: #ccc;">|</span>
+                <a href="catalogo.html"><i class="fas fa-search"></i></a>
+                <a href="carrito.html" class="cart-icon-wrapper">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count" class="cart-count-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="legal-container">
+        <div class="reclamaciones-header">
+            <div>
+                <img src="logo1.png" alt="JHONZ" style="height: 45px; margin-bottom: 10px;">
+                <h1>LIBRO DE RECLAMACIONES</h1>
+            </div>
+            <div class="hoja-info">
+                <p>HOJA DE RECLAMACIÓN</p>
+                <p id="fecha-actual" style="color: #888; font-size: 0.9rem;"></p>
+            </div>
+        </div>
+
+        <div class="legal-card">
+            <form id="complaintForm">
+                <div class="section-title">1. IDENTIFICACIÓN DEL CONSUMIDOR</div>
+                <div class="grid-row">
+                    <div class="form-group">
+                        <label>Nombres y Apellidos</label>
+                        <input type="text" id="nombre" class="form-input" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>DNI / CE</label>
+                        <input type="number" id="dni" class="form-input" placeholder="Número de documento" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono de Contacto</label>
+                        <input type="tel" id="telefono" class="form-input" placeholder="926884544" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" id="email" class="form-input" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Dirección de Domicilio</label>
+                        <input type="text" id="domicilio" class="form-input" placeholder="Calle, Distrito, Ciudad" required>
+                    </div>
+                </div>
+
+                <div class="section-title">2. DETALLE DEL PRODUCTO O SERVICIO</div>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="bien" value="Producto" checked> PRODUCTO</label>
+                    <label class="radio-option"><input type="radio" name="bien" value="Servicio"> SERVICIO</label>
+                </div>
+                <div class="grid-row">
+                    <div class="form-group">
+                        <label>Monto del Producto (S/.)</label>
+                        <input type="number" id="monto" class="form-input" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre de la Prenda</label>
+                        <input type="text" id="descripcion_bien" class="form-input" placeholder="Ej: Hoodie JHONZ Black" required>
+                    </div>
+                </div>
+
+                <div class="section-title">3. DETALLE DE LA RECLAMACIÓN</div>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="tipo" value="Reclamación" checked> RECLAMACIÓN</label>
+                    <label class="radio-option"><input type="radio" name="tipo" value="Queja"> QUEJA</label>
+                </div>
+                <div class="form-group full-width">
+                    <label>Explicación de lo sucedido</label>
+                    <textarea id="detalle" class="form-input" style="height: 120px;" placeholder="Detalla los hechos..." required></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label>¿Qué solución esperas?</label>
+                    <textarea id="pedido" class="form-input" style="height: 80px;" placeholder="Tu pedido concreto..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit-legal">REGISTRAR Y ENVIAR A JHONZ</button>
+            </form>
+
+            <div class="footer-legal-text">
+                <strong>NOTAS LEGALES PARA EL CONSUMIDOR:</strong><br>
+                • <strong>RECLAMO:</strong> Disconformidad relacionada a los productos vendidos.<br>
+                • <strong>QUEJA:</strong> Malestar respecto a la atención recibida.<br>
+                * Conforme a la Ley N° 29571, el proveedor debe dar respuesta en un plazo máximo de quince (15) días hábiles. El registro aquí no impide acudir a INDECOPI.
+            </div>
+        </div>
+        
+        <p style="text-align: center; margin-top: 30px;"><a href="index.html" style="color: var(--orange); text-decoration: none; font-family: 'Oswald'; font-weight: bold;">← VOLVER AL INICIO</a></p>
+    </div>
+    <!-- COMUNIDAD Y REDES GIGANTES -->
+    <section class="social-perfection">
+        <div class="container">
+            <h2>SÍGUENOS EN NUESTRAS REDES</h2>
+            <div class="social-row-giant">
+                <a href="https://web.facebook.com/profile.php?id=61566815045695" class="social-box fb">
+                    <div class="icon-circle"><i class="fab fa-facebook"></i></div>
+                    <span>FACEBOOK</span>
+                </a>
+                <a href="https://www.instagram.com/jhonzoriginal/" class="social-box ig">
+                    <div class="icon-circle"><i class="fab fa-instagram"></i></div>
+                    <span>INSTAGRAM</span>
+                </a>
+                <a href=" https://www.tiktok.com/@jhonzoriginal" class="social-box tk">
+                    <div class="icon-circle"><i class="fab fa-tiktok"></i></div>
+                    <span>TIKTOK</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                <h3 style="font-size: 2rem; color: white;">
+                    <img src="img/logo1.png" alt="" style="width: 80px; height: 80px; object-fit: cover; vertical-align: middle; border-radius: 5px;">
+                    JHONZ</h3>
+                    <p style="margin-top: 15px; line-height: 1.6;">Diseñado para quienes viven con estilo. Moda urbana, casual, oversize, deportiva, moderna, cómoda y de alta calidad para destacar cada día.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>CONTACTO</h3>
+                    <p><i class="fas fa-phone-alt"></i> +51 926 884 544</p>
+                    <p><i class="fas fa-envelope"></i> jhonzcajamarca@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Sábado: 8:00 AM - 8:00 PM</p>
+                </div>
+                <div class="footer-col">
+                <!-- uvicacion de mapa en tiempo real-->
+               <div class="footer-col">
+                <h3>PUNTO DE VENTA</h3>
+                <p style="color:#888;">
+                    <i class="fas fa-map-marker-alt" style="color:var(--orange);"></i> Cajamarca, Perú</p>
+                    <!-- Contenedor del mapa real para el pie de página -->
+                     <h3><div style="height:100px; margin-top:15px; border-radius:10px; overflow:hidden; border: 1px solid #333;">
+                        <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15835.88934571676!2d-78.5167!3d-7.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91302336336b9579%3A0x6b490f2095f9c46d!2sCajamarca!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: grayscale(1) invert(1) contrast(1.2); opacity: 0.7;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe></h3>
+                </div>
+            </div>
+                <div class="footer-col">
+                    <h3>SOPORTE</h3>
+                    <a href="#"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Guía de Tallas</a>
+                    <a href="devoluciones.html"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Cambios y Devoluciones</a>
+                    <a href="libro.html"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Libro de Reclamaciones</a>
+                    <a href="privacidad.html"><i class="fas fa-chevron-right" style="font-size: 0.8rem; color: var(--orange);"></i> Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+        <footer style="background: #000; padding: 60px 0; border-top: 1px solid #111;">
+        <div class="container" style="text-align: center; color: #444;">
+            <p>&copy; 2026 JHONZ - Cajamarca, Perú. Tendencias que inspiran tu forma de vestir.</p>
+        </div>
+    </footer>
+    <a href="https://wa.me/51926884544" class="float-ws" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <script src="main.js"></script>
+</body>
+</html>
+    <script>
+        const hoy = new Date();
+        document.getElementById('fecha-actual').innerText = "FECHA: " + hoy.toLocaleDateString();
+
+        document.getElementById('complaintForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const dni = document.getElementById('dni').value;
+            const tel = document.getElementById('telefono').value;
+            const correo = document.getElementById('email').value;
+            const dir = document.getElementById('domicilio').value;
+            const monto = document.getElementById('monto').value;
+            const prenda = document.getElementById('descripcion_bien').value;
+            const detalle = document.getElementById('detalle').value;
+            const pedido = document.getElementById('pedido').value;
+            
+            const bien = document.querySelector('input[name="bien"]:checked').value;
+            const tipo = document.querySelector('input[name="tipo"]:checked').value;
+
+            const ws_number = "51926884544";
+            
+            const text = `*⚖️ LIBRO DE RECLAMACIONES JHONZ ⚖️*%0A` +
+                         `---------------------------------------%0A` +
+                         `👤 *CLIENTE:* ${nombre}%0A` +
+                         `🪪 *DNI:* ${dni}%0A` +
+                         `📞 *TEL:* ${tel}%0A` +
+                         `📧 *CORREO:* ${correo}%0A` +
+                         `🏠 *DIR:* ${dir}%0A` +
+                         `---------------------------------------%0A` +
+                         `🧥 *BIEN:* ${prenda} (${bien})%0A` +
+                         `💰 *MONTO:* S/ ${monto}%0A` +
+                         `🚩 *TIPO:* ${tipo}%0A` +
+                         `---------------------------------------%0A` +
+                         `📝 *DETALLE:* ${detalle}%0A` +
+                         `💡 *SOLICITA:* ${pedido}%0A` +
+                         `---------------------------------------`;
+
+            window.open(`https://wa.me/${ws_number}?text=${text}`, '_blank');
+            
+            // LIMPIAR CAMPOS DESPUÉS DEL ENVÍO
+            this.reset();
+        });
+    </script>
+    <a href="https://wa.me/51926884544" class="float-ws" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <script src="main.js"></script>
+</body>
+</html>
